@@ -1,9 +1,10 @@
 #!/bin/bash
 
 ### VARIABLES:
+export LOG="/Users/kubackimike/Pictures/gmover.log"
 export SOURCE="/Users/kubackimike/Pictures/Scan*"
 export DESTINATION="/Users/kubackimike/Pictures/test with space/"
-current_time=$(date "+%Y.%m.%d-%H.%M.%S")
+current_time=$(date "+%Y/%m/%d %H:%M:%S")
 
 ls -l ~/Pictures/Scan* > /dev/null 2>&1
 
@@ -17,10 +18,11 @@ then
 	echo $DESTINATION
 	echo ""
 	echo "Are you sure you want to move the files? Press Enter to continue."
-	echo ""
+	echo "" >> $LOG
 	read a
-	mv $SOURCE "$DESTINATION"
-	echo ""
+	echo "Timestamp:" $current_time >> $LOG
+	mv -n $SOURCE "$DESTINATION" | printf '%s\n' Files: $SOURCE "Moved to:" "$DESTINATION" >> $LOG
+	echo "" >> $LOG
 	echo "*** SUCCESS ***"
 	echo "All scans have been moved to Google Drive."
 	echo ""
