@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ### VARIABLES:
-export LOG="/Users/kubackimike/Pictures/gmover.log"
-export SOURCE="/Users/kubackimike/Pictures/Scan*"
-export DESTINATION="/Users/kubackimike/Pictures/test with space/"
+export LOG="/Users/mkubacki/Pictures/gmover.log"
+export SOURCE="/Users/mkubacki/Pictures/Scan*"
+export DESTINATION=/Users/mkubacki/.CMVolumes/JetCreative/Documents/Scans
 current_time=$(date "+%Y/%m/%d %H:%M:%S")
 
 ls -l ~/Pictures/Scan* > /dev/null 2>&1
@@ -21,7 +21,7 @@ then
 	echo "" >> $LOG
 	read a
 	echo "Timestamp:" $current_time >> $LOG
-	mv -n $SOURCE "$DESTINATION" | printf '%s\n' Files: $SOURCE "Moved to:" "$DESTINATION" >> $LOG
+	mv -n $SOURCE $DESTINATION | printf '%s\n' Files: $SOURCE "Moved to:" "$DESTINATION" >> $LOG
 	echo "" >> $LOG
 	echo "*** SUCCESS ***"
 	echo "All scans have been moved to Google Drive."
